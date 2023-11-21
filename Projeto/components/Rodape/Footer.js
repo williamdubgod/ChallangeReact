@@ -1,6 +1,7 @@
-import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
+import estilos from './estilos';
 
 export default function Footer() {
 
@@ -10,39 +11,33 @@ export default function Footer() {
         navigation.navigate('HomeScreen'); 
     };
 
+    const navigateToSearch = () => {
+        navigation.navigate('SearchScreen'); 
+    };
+
     const navigateToRequests = () => {
-        navigation.navigate('RequestsScreen'); 
+        navigation.navigate('RequestScreen'); 
+    };
+
+    const navigateToUser = () => {
+        navigation.navigate('UserScreen'); 
     };
 
     return(
-        <View style={styles.footer}>
+        <View style={estilos.footer}>
             <TouchableOpacity onPress={navigateToHome}>
                 <Icon name="home" type="material-icons" size={30} color="white" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={navigateToRequests}>
+            <TouchableOpacity onPress={navigateToSearch}>
                 <Icon name="search" type="material-icons" size={30} color="white" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigateToRequests}>
                 <Icon name="shopping-cart" type="material-icons" size={30} color="white" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigateToUser}>
                 <Icon name="account-circle" type="material-icons" size={30} color="white" />
             </TouchableOpacity>
         </View>
     )
 }
 
-const { width } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-    footer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      backgroundColor: '#202022',
-      padding: 0.075 * width, // Usando porcentagem da largura
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
-  });

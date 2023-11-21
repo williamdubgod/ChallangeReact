@@ -1,20 +1,22 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import InicialPage from './components/InicialPage';
-import LoginScreen from './components/LoginScreen';
-import RegisterScreen from './components/RegisterScreen';
-import HomeScreen from './components/HomeScreen';
-import RequestsScreen from './components/RequestsScreen';
+import InicialPage from './components/Inicial/InicialPage';
+import LoginScreen from './components/Login/LoginScreen';
+import RegisterScreen from './components/Cadastro/RegisterScreen';
+import HomeScreen from './components/Home/HomeScreen';
+import SearchScreen from './components/Busca/SearchScreen';
+import RequestScreen from './components/Pedidos/RequestScreen';
+import UserScreen from './components/User/UserScreen';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="InicialPage">
         <Stack.Screen
-          name="Home"
+          name="InicialPage"
           component={InicialPage}
           options={{
             headerShown: false,
@@ -42,8 +44,22 @@ function App() {
           })}
         />
         <Stack.Screen
-          name="RequestsScreen"
-          component={RequestsScreen}
+          name="SearchScreen"
+          component={SearchScreen}
+          options={({ navigation }) => ({
+            headerShown: false,
+          })}
+        />
+        <Stack.Screen
+          name="RequestScreen"
+          component={RequestScreen}
+          options={({ navigation }) => ({
+            headerShown: false,
+          })}
+        />
+        <Stack.Screen
+          name="UserScreen"
+          component={UserScreen}
           options={({ navigation }) => ({
             headerShown: false,
           })}
